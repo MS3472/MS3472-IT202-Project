@@ -1,4 +1,5 @@
 <?php
+//ms3472
 require_once('database.php');
 $emailAddress = $_POST['emailAddress'];
 $password = $_POST['password'];

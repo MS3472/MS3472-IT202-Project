@@ -1,4 +1,5 @@
 <?php
+//ms3472
 if(isset($_SESSION['login'])){
     unset($_SESSION['login']);
     unset($_SESSION['emailAddress']);

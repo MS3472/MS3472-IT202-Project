@@ -1,4 +1,5 @@
 <?php
+//ms3472
  function getDB() {
     $host = 'sql1.njit.edu';
     $port = 3306;
