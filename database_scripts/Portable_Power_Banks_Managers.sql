@@ -1,3 +1,12 @@
+/* ms3472*/
+/* 10/04/2024*/
+/* IT202-MC*/
+/* Phase 1 */
+/* MS3472@njit.edu*/
+
+
+
+
 CREATE TABLE Portable_Power_Banks_Managers (
 Power_Banks_ManagerID     INT(11)        NOT NULL   AUTO_INCREMENT,
  emailAddress           VARCHAR(255)   NOT NULL   UNIQUE,
