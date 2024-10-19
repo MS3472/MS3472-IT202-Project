@@ -1,4 +1,9 @@
 <?php
+//ms3472
+//10/19/2024
+//IT202-MC
+//Phase 2
+//MS3472@njit.edu
 include("portablepowerbankproduct.php");
 $items = Item::getItems();
 

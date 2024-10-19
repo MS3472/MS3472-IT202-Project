@@ -1,3 +1,9 @@
+/* ms3472*/
+/* 10/19/2024*/
+/* IT202-MC*/
+/* Phase 2 */
+/* MS3472@njit.edu*/
+
 CREATE TABLE PortablePowerBanksCategories (
 Protable_PowerBank_CategoryID       INT(11)        NOT NULL,
 Portable_PowerBank_CategoryCode     VARCHAR(10)    NOT NULL   UNIQUE,

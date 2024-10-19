@@ -1,4 +1,9 @@
 <?php
+//ms3472
+//10/19/2024
+//IT202-MC
+//Phase 2
+//MS3472@njit.edu
 include("portablepowebankcategory.php");
 
 if (isset($_GET['categoryID']) && isset($_GET['categoryCode']) && isset($_GET['categoryName']) && isset($_GET['shelfNum'])) {

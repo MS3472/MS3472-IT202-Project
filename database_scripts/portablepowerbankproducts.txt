@@ -1,3 +1,8 @@
+/* ms3472*/
+/* 10/19/2024*/
+/* IT202-MC*/
+/* Phase 2 */
+/* MS3472@njit.edu*/
 Add a product 
 http://localhost:3000/addportablepowerbankproduct.test.php?productID=&productCode=&productName=&description=&model=&categoryID=&listPrice=&wholesalePrice=
 

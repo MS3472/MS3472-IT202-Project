@@ -1,4 +1,9 @@
 <?php
+//ms3472
+//10/19/2024
+//IT202-MC
+//Phase 2
+//MS3472@njit.edu
 error_log("\$_GET " . print_r($_GET, true));
 include("portablepowebankcategory.php");
 $categoryID = $_GET['categoryID'];
