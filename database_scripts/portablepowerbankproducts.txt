@@ -1,0 +1,11 @@
+Add a product 
+http://localhost:3000/addportablepowerbankproduct.test.php?productID=&productCode=&productName=&description=&model=&categoryID=&listPrice=&wholesalePrice=
+
+List all products
+http://localhost:3000/listportablepowerbankproduct.test.php
+
+Update product
+http://localhost:3000/changeportablepowerbankproduct.test.php?productID=&productCode=&productName=&description=&model=&categoryID=&listPrice=&wholesalePrice=
+
+delete a product
+http://localhost:3000/removeportablepowerbankproduct.test.php?productID=

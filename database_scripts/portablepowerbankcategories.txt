@@ -1,0 +1,11 @@
+To add an item 
+http://localhost:3000/addportablepowerbankcategory.test.php?categoryID=    &categoryCode=  &categoryName=  &shelfNum=  
+
+to list all items 
+http://localhost:3000/listportablepowerbankcategories.test.php
+
+to update
+http://localhost:3000/changeportablepowerbankcategory.test.php?categoryID=  &categoryCode=  &categoryName= &shelfNum= 
+
+to remove
+http://localhost:3000/removeportablepowerbankcategory.test.php?categoryID= 

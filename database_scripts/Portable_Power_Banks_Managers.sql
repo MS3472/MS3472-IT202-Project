@@ -7,7 +7,7 @@
 
 
 
-CREATE TABLE Portable_Power_Banks_Managers (
+CREATE TABLE PortablePowerBanksManagers (
 Power_Banks_ManagerID     INT(11)        NOT NULL   AUTO_INCREMENT,
  emailAddress           VARCHAR(255)   NOT NULL   UNIQUE,
  password               VARCHAR(64)    NOT NULL,
