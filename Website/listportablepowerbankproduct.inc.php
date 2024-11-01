@@ -4,7 +4,12 @@
 //IT202-MC
 //Phase 2
 //MS3472@njit.edu
-include("portablepowerbankproduct.php");
+?>
+<h2>Select Item</h2>
+<form name="items" method="post">
+   <select name="itemID" size="20">
+<?php
+//include("portablepowerbankproduct.php");
 $items = Item::getItems();
 
 
@@ -25,7 +30,10 @@ if ($items === NULL || empty($items)) {
 
         $option = "ID: $productID | Code: $productCode | Name: $productName | List Price: $$listPrice";
         
-        echo "$option<br>";
+        echo "<option value=\"$itemID\">$option</option>\n";
     }
 }
 ?>
+</select>
+</form>
+
