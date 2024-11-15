@@ -1,4 +1,11 @@
 <table width="100%" cellpadding="3">
+<?php
+// ms3472
+// 10/19/2024
+// IT202-MC
+// Phase 3
+// MS3472@njit.edu
+?>
     <?php
     if (!isset($_SESSION['login'])) {
         echo "<tr><td><h3>Please log in<br>to access navigation options</h3></td></tr>";

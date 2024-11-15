@@ -18,12 +18,12 @@ if (isset($_SESSION['login'])) {
         if ($item === NULL) {
             echo "<h2>Item with ID $productID not found.</h2>\n";
         } else {
-            $item->productCode = $_POST['productCode'];
-            $item->productName = $_POST['productName'];
-            $item->description = $_POST['description'];
-            $item->model = $_POST['model'];
-            $item->categoryID = $_POST['categoryID'];
-            $item->listPrice = $_POST['listPrice'];
+            $item->productCode = htmlspecialchars($_POST['productCode']);
+            $item->productName = htmlspecialchars($_POST['productName']);
+            $item->description = htmlspecialchars($_POST['description']);
+            $item->model = htmlspecialchars($_POST['model']);
+            $item->categoryID = $_POST['categoryID']; 
+            $item->listPrice = $_POST['listPrice'];   
             $item->wholesalePrice = $_POST['wholesalePrice'];
 
             $result = $item->updateItem();

@@ -1,3 +1,10 @@
+<?php
+// ms3472
+// 10/19/2024
+// IT202-MC
+// Phase 3
+// MS3472@njit.edu
+?>
 <h2>Update Product Information</h2>
 <form action="index.php?content=changeportablepowerbankproduct" method="post">
     <table cellpadding="3" border="1">
@@ -27,11 +34,11 @@
         </tr>
         <tr>
             <td><label for="listPrice">List Price:</label></td>
-            <td><input type="text" id="listPrice" name="listPrice" size="10"></td>
+            <td><input type="number" id="listPrice" name="listPrice" size="10"></td>
         </tr>
         <tr>
             <td><label for="wholesalePrice">Wholesale Price:</label></td>
-            <td><input type="text" id="wholesalePrice" name="wholesalePrice" size="10"></td>
+            <td><input type="number" id="wholesalePrice" name="wholesalePrice" size="10"></td>
         </tr>
     </table>
     <br>

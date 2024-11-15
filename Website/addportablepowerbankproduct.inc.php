@@ -12,11 +12,12 @@
 
 if (isset($_SESSION['login'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['content'] === 'addportablepowerbankproduct') {
+        
         $productID = $_POST['productID'];
-        $productCode = $_POST['productCode'];
-        $productName = $_POST['productName'];
-        $description = $_POST['description'];
-        $model = $_POST['model'];
+        $productCode = htmlspecialchars($_POST['productCode']);
+        $productName = htmlspecialchars($_POST['productName']);
+        $description = htmlspecialchars($_POST['description']);
+        $model = htmlspecialchars($_POST['model']);
         $categoryID = $_POST['categoryID'];
         $listPrice = $_POST['listPrice'];
         $wholesalePrice = $_POST['wholesalePrice'];
@@ -37,19 +38,17 @@ if (isset($_SESSION['login'])) {
             echo "<h2>Missing parameter: List Price.</h2>\n";
         } elseif (trim($wholesalePrice) === '') {
             echo "<h2>Missing parameter: Wholesale Price.</h2>\n";
-        } 
-        elseif (!is_numeric($productID) || !is_numeric($categoryID) || !is_numeric($listPrice) || !is_numeric($wholesalePrice)) {
+        } elseif (!is_numeric($productID) || !is_numeric($categoryID) || !is_numeric($listPrice) || !is_numeric($wholesalePrice)) {
             echo "<h2>Sorry, please enter valid numeric values for Product ID, Category ID, List Price, and Wholesale Price.</h2>\n";
-        } 
-        elseif (Item::findItem($productID) !== NULL) {
+        } elseif (Item::findItem($productID) !== NULL) {
             echo "<h2>Product ID $productID is already in use. Please choose a different ID.</h2>\n";
-        }
-        elseif (Category::findCategory($categoryID) === NULL) {
+        } elseif (Category::findCategory($categoryID) === NULL) {
             echo "<h2>Category ID $categoryID does not exist. Please enter a valid Category ID.</h2>\n";
-        }
-        else {
+        } else {
+            
             $listPrice = (float)$listPrice;
             $wholesalePrice = (float)$wholesalePrice;
+
             $item = new Item(
                 $productID,
                 $productCode,
