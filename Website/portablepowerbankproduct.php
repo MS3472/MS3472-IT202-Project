@@ -1,9 +1,9 @@
 <?php
-//ms3472
-//10/19/2024
-//IT202-MC
-//Phase 2
-//MS3472@njit.edu
+// ms3472
+// 10/19/2024
+// IT202-MC
+// Phase 2
+// MS3472@njit.edu
 require_once('database.php');
 
 class Item
@@ -11,22 +11,22 @@ class Item
     public $productID;
     public $productCode;
     public $productName;
-    public $description; 
-    public $model; 
+    public $description;
+    public $model;
     public $categoryID;
-    public $listPrice; 
-    public $wholesalePrice; 
+    public $listPrice;
+    public $wholesalePrice;
 
     function __construct($productID, $productCode, $productName, $description, $model, $categoryID, $listPrice, $wholesalePrice)
     {
         $this->productID = $productID;
         $this->productCode = $productCode;
         $this->productName = $productName;
-        $this->description = $description; 
-        $this->model = $model; 
+        $this->description = $description;
+        $this->model = $model;
         $this->categoryID = $categoryID;
-        $this->listPrice = $listPrice; 
-        $this->wholesalePrice = $wholesalePrice; 
+        $this->listPrice = $listPrice;
+        $this->wholesalePrice = $wholesalePrice;
     }
 
     function __toString()
@@ -38,7 +38,7 @@ class Item
                   "<h2>Model: $this->model</h2>\n" .
                   "<h2>Category ID: $this->categoryID</h2>" .
                   "<h2>Retail Price: $$this->listPrice</h2>\n" .
-                  "<h2>Wholesale Price: $$this->wholesalePrice</h2>\n"; 
+                  "<h2>Wholesale Price: $$this->wholesalePrice</h2>\n";
         return $output;
     }
 
@@ -61,7 +61,6 @@ class Item
             return false;
         }
 
-
         $query = "INSERT INTO PortablePowerBanksProducts 
                   (Portable_PowerBank_ProductID, Portable_PowerBank_ProductCode, Portable_PowerBank_ProductName, 
                    Portable_PowerBank_description, Portable_PowerBank_model, 
@@ -71,15 +70,15 @@ class Item
         $stmt = $db->prepare($query);
 
         $stmt->bind_param(
-            "issssidd",  
-            $this->productID,            
-            $this->productCode,         
-            $this->productName,          
-            $this->description,          
-            $this->model,               
-            $this->categoryID,           
-            $this->listPrice,           
-            $this->wholesalePrice        
+            "issssidd",
+            $this->productID,
+            $this->productCode,
+            $this->productName,
+            $this->description,
+            $this->model,
+            $this->categoryID,
+            $this->listPrice,
+            $this->wholesalePrice
         );
 
         $result = $stmt->execute();
@@ -90,7 +89,7 @@ class Item
     static function getItems()
     {
         $db = getDB();
-        $query = "SELECT * FROM PortablePowerBanksProducts"; 
+        $query = "SELECT * FROM PortablePowerBanksProducts";
         $result = $db->query($query);
 
         if (mysqli_num_rows($result) > 0) {
@@ -101,7 +100,7 @@ class Item
                     $row['Portable_PowerBank_ProductCode'],
                     $row['Portable_PowerBank_ProductName'],
                     $row['Portable_PowerBank_description'],
-                    $row['Portable_PowerBank_model'],        
+                    $row['Portable_PowerBank_model'],
                     $row['Portable_PowerBank_CategoryID'],
                     $row['Portable_PowerBank_listPrice'],
                     $row['Portable_PowerBank_WholesalePrice']
@@ -112,7 +111,7 @@ class Item
             return $items;
         } else {
             $db->close();
-            return NULL; 
+            return NULL;
         }
     }
 
@@ -121,7 +120,7 @@ class Item
         $db = getDB();
         $query = "SELECT * FROM PortablePowerBanksProducts WHERE Portable_PowerBank_ProductID = ?";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("i", $productID); 
+        $stmt->bind_param("i", $productID);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -130,8 +129,8 @@ class Item
                 $row['Portable_PowerBank_ProductID'],
                 $row['Portable_PowerBank_ProductCode'],
                 $row['Portable_PowerBank_ProductName'],
-                $row['Portable_PowerBank_description'],  
-                $row['Portable_PowerBank_model'],        
+                $row['Portable_PowerBank_description'],
+                $row['Portable_PowerBank_model'],
                 $row['Portable_PowerBank_CategoryID'],
                 $row['Portable_PowerBank_listPrice'],
                 $row['Portable_PowerBank_WholesalePrice']
@@ -144,9 +143,49 @@ class Item
         }
     }
 
-    public function updateItem() {
+    static function getTotalItems()
+    {
         $db = getDB();
-        
+        $query = "SELECT COUNT(Portable_PowerBank_ProductID) AS totalItems FROM PortablePowerBanksProducts";
+        $result = $db->query($query);
+        $row = $result->fetch_assoc();
+        if ($row) {
+            return $row['totalItems'];
+        } else {
+            return NULL;
+        }
+    }
+
+    static function getTotalListPrice()
+    {
+        $db = getDB();
+        $query = "SELECT SUM(Portable_PowerBank_listPrice) AS totalListPrice FROM PortablePowerBanksProducts";
+        $result = $db->query($query);
+        $row = $result->fetch_assoc();
+        if ($row) {
+            return $row['totalListPrice'];
+        } else {
+            return NULL;
+        }
+    }
+
+    static function getTotalWholesalePrice()
+    {
+        $db = getDB();
+        $query = "SELECT SUM(Portable_PowerBank_WholesalePrice) AS totalWholesalePrice FROM PortablePowerBanksProducts";
+        $result = $db->query($query);
+        $row = $result->fetch_assoc();
+        if ($row) {
+            return $row['totalWholesalePrice'];
+        } else {
+            return NULL;
+        }
+    }
+
+    public function updateItem()
+    {
+        $db = getDB();
+
         $query = "UPDATE PortablePowerBanksProducts SET 
                       Portable_PowerBank_ProductCode = ?, 
                       Portable_PowerBank_ProductName = ?, 
@@ -156,15 +195,15 @@ class Item
                       Portable_PowerBank_listPrice = ?, 
                       Portable_PowerBank_WholesalePrice = ? 
                   WHERE Portable_PowerBank_ProductID = ?";
-    
+
         $stmt = $db->prepare($query);
         if (!$stmt) {
             echo "Error preparing statement: " . $db->error;
             return false;
         }
-    
+
         $stmt->bind_param(
-            "sssssdii", 
+            "sssssdii",
             $this->productCode,
             $this->productName,
             $this->description,
@@ -174,53 +213,50 @@ class Item
             $this->wholesalePrice,
             $this->productID
         );
-    
+
         if (!$stmt->execute()) {
             echo "Error executing statement: " . $stmt->error;
             return false;
         }
-    
+
         $db->close();
         return true;
     }
-    
-    
 
     public function removeItem()
-{
-    $db = getDB();  
-    $query = "DELETE FROM PortablePowerBanksProducts WHERE Portable_PowerBank_ProductID = ?";
-    $stmt = $db->prepare($query);
-    $stmt->bind_param("i", $this->productID);
+    {
+        $db = getDB();
+        $query = "DELETE FROM PortablePowerBanksProducts WHERE Portable_PowerBank_ProductID = ?";
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("i", $this->productID);
 
-    return $stmt->execute();  
-}
-public function updateModelOnly() {
-    $db = getDB();
-    
-    $query = "UPDATE PortablePowerBanksProducts 
-              SET Portable_PowerBank_model = ? 
-              WHERE Portable_PowerBank_ProductID = ?";
-    
-    $stmt = $db->prepare($query);
-    if (!$stmt) {
-        echo "Error preparing statement: " . $db->error;
-        return false;
+        return $stmt->execute();
     }
-    
-    $stmt->bind_param("si", $this->model, $this->productID);
-    
-    // Debugging to confirm model is being passed
-    echo "Updating model to: " . $this->model . "<br>";
-    
-    if (!$stmt->execute()) {
-        echo "Error executing statement: " . $stmt->error;
-        return false;
-    }
-    
-    $db->close();
-    return true;
-}
 
+    public function updateModelOnly()
+    {
+        $db = getDB();
+
+        $query = "UPDATE PortablePowerBanksProducts 
+                  SET Portable_PowerBank_model = ? 
+                  WHERE Portable_PowerBank_ProductID = ?";
+
+        $stmt = $db->prepare($query);
+        if (!$stmt) {
+            echo "Error preparing statement: " . $db->error;
+            return false;
+        }
+
+        $stmt->bind_param("si", $this->model, $this->productID);
+        echo "Updating model to: " . $this->model . "<br>";
+
+        if (!$stmt->execute()) {
+            echo "Error executing statement: " . $stmt->error;
+            return false;
+        }
+
+        $db->close();
+        return true;
+    }
 }
 ?>

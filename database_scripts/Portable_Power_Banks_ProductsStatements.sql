@@ -17,6 +17,8 @@ CREATE TABLE PortablePowerBanksProducts (
 );
 
 
+DELETE FROM PortablePowerBanksProducts
+WHERE Portable_PowerBank_ProductID = 701;
 
 
 
