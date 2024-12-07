@@ -56,7 +56,7 @@
                     <label>Search for Product:</label><br>
                     <input type="text" name="productID" size="14" />
                     <input type="submit" value="Find" />
-                    <input type="hidden" name="content" value="updateportablepowerbankproduct">
+                    <input type="hidden" name="content" value="displayportablepowerbankproduct">
                 </form>
             </td>
         </tr>

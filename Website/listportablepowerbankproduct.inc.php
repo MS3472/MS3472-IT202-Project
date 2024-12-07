@@ -4,7 +4,7 @@
 // IT202-MC
 // Phase 3
 // MS3472@njit.edu
-require_once('portablepowerbankproduct.php'); // Include the product class
+require_once('portablepowerbankproduct.php'); 
 
 ?>
 <script language="javascript">
@@ -19,11 +19,11 @@ require_once('portablepowerbankproduct.php'); // Include the product class
        }
        if (userConfirmed) {
            if (target == 1) {
-               // Redirect for delete action
+        
                items.action = "index.php?content=removeportablepowerbankproduct";
            }
            if (target == 2) {
-               // Redirect for update action with the selected product ID
+
                var selectedItem = document.items.itemID.value;
                if (selectedItem) {
                    items.action = "index.php?content=updateportablepowerbankproduct&productID=" + selectedItem;
