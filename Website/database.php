@@ -9,7 +9,7 @@
     $port = 3306;
     $dbname = 'ms3472';
     $username = 'ms3472';
-    $password = 'It2021234567!';
+    $password = '************';
    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
    try {
        $db = new mysqli($host, $username, $password, $dbname, $port);
