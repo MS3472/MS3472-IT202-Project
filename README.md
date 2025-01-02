@@ -2,6 +2,7 @@
 MS3472-IT202-Project Website
 
 Portable Power Bank Inventory Management Website
+
 Overview
 This project is a simple web application designed to manage user authentication and inventory for a portable power bank company. It features a login system and an inventory management interface, demonstrating basic web development and database integration skills.
 
